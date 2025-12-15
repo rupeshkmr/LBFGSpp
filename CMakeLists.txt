@@ -84,5 +84,13 @@ install(
     ${CMAKE_CURRENT_BINARY_DIR}/lbfgspp-config-version.cmake
   DESTINATION lib/cmake/lbfgspp
 )
+if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+    set(IS_TOP_LEVEL ON)
+else()
+    set(IS_TOP_LEVEL OFF)
+endif()
 
-add_subdirectory(examples)
+# Usage
+if(IS_TOP_LEVEL)
+    add_subdirectory(examples)
+endif()
